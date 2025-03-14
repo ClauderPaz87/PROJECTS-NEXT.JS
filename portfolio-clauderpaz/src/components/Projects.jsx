@@ -41,7 +41,6 @@ const Projects = () => {
             </p>
           </div>
         </Link>
-
         <Link href="https://projeto-appweather.vercel.app/" 
         className="hover:shadow-xl hover:shadow-shadowImage hover:-translate-y-3 hover:scale-105 transition-all ease-linear
         w-72 mx-auto">
