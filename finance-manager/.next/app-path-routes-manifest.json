@@ -1,0 +1,15 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/Trips/createTrips/page": "/Trips/createTrips",
+  "/Drivers/page": "/Drivers",
+  "/Trips/page": "/Trips",
+  "/CardDashboard/page": "/CardDashboard",
+  "/page": "/",
+  "/clientes/page": "/clientes",
+  "/editTrip/[id]/page": "/editTrip/[id]",
+  "/passenger/createPassenger/page": "/passenger/createPassenger",
+  "/passenger/createPassenger/payClient/cityPassenger/page": "/passenger/createPassenger/payClient/cityPassenger",
+  "/passenger/createPassenger/payClient/page": "/passenger/createPassenger/payClient",
+  "/passenger/page": "/passenger",
+  "/taxi/page": "/taxi"
+}
