@@ -19,7 +19,7 @@ const Contact = () => {
 
 
     return (
-        <div id="contato" className="min-h-screen w-full mt-14">
+        <div id="contato" className="min-h-screen w-full mt-28">
             <div className="w-full flex justify-center">
                 <p className="font-bold text-colorLight text-4xl">Entre em contato</p>
             </div>
