@@ -21,11 +21,11 @@ const TableUsers = () => {
           <table className="w-full mt-2 table-auto">
             <thead className="">
               <tr>
-                <th className="w-12">Foto</th>
-                <th className="pr-2">Nome</th>
-                <th className="">Email</th>
-                <th className="pl-5">Admin</th>
-                <th className="w-16 pr-18">Criado em</th>
+                <th className="w-12 pr-2">Foto</th>
+                <th className="pr-0 lg:pr-2">Nome</th>
+                <th className="pr-6 lg:pr-0">Email</th>
+                <th className="pr-3 lg:pl-5">Admin</th>
+                <th className="w-16 pr-2 lg:pr-18">Criado em</th>
                 <th>Ações</th>
               </tr>
             </thead>
@@ -44,12 +44,12 @@ const TableUsers = () => {
                     )}
                   </td>
                   <td className="pl-6 w-24">{user.name}</td>
-                  <td className="w-24 pl-7">{user.email}</td>
-                  <td className="pl-14 w-36">
+                  <td className="w-16 pl-4 lg:w-24 lg:pl-7">{user.email}</td>
+                  <td className="pl-4 lg:pl-12 lg:pr-7 md:pl-9 sm:pl-9 w-36">
                     {user.admin === true ? "Sim" : "Não"}
                   </td>
                   <td className="pl-2 w-40">{user.date}</td>
-                  <td className="pl-12 w-40">
+                  <td className="pl-4 lg:pl-12 w-40">
                     <button
                       onClick={() => editUser(user.id)}
                       className="text-white font-medium text-sm bg-users-background-header h-6 w-12 px-0.5 mr-1"
