@@ -3,6 +3,7 @@ import { useRef } from "react";
 import OptionsCountry from "./OptionsCountry";
 import { usePlatformUsers } from "../../store/PlatformUsers";
 import { toast } from "react-toastify";
+import UserAdmin from "./UserAdmin";
 
 const FormsUsers = () => {
   const {
@@ -64,120 +65,132 @@ const FormsUsers = () => {
   };
 
   return (
-      <div style={{width:"26vw"}} className="flex max-w-md absolute right-4 top-60  bg-white shadow-sm rounded-sm border-t-4 border-users-modal">
-        <form className="pt-3 pl-3 pb-3 w-screen" onSubmit={handleSubmit}>
-          <div className="border-b border-zinc-200 w-full">
-            <p className="text-xl pb-2">Novo Usúario</p>
-          </div>
-          <div className="mt-2 pr-4">
-            <p className="font-semibold pb-2">Nome</p>
-            <input
-              ref={inputName}
-              className="outline-sky-600 border border-zinc-200 p-1 w-full"
-              placeholder="Digite o nome do usuário"
-              type="text"
-            />
-          </div>
-          <div className="mt-4">
-            <div>
-              <p className="font-semibold pb-2">Gênero</p>
+      <div 
+      className="flex flex-col justify-center">
+
+        <div className="mt-12 px-4">
+          <UserAdmin/>
+        </div>
+
+        <div className="flex mt-8 md:mt-10 md:justify-center md:pl-60 lg:mt-4 lg:justify-end lg:p-0 px-4">
+          <form
+          className="pt-3 pl-3 pb-3 w-full bg-white shadow-sm rounded-sm border-t-4 border-users-modal
+          xl:w-[26vw] lg:w-full lg:mr-3.5 md:w-[65vw] sm:w-full"
+          onSubmit={handleSubmit}>
+            <div className="border-b border-zinc-200 w-full">
+              <p className="text-xl pb-2">Novo Usúario</p>
             </div>
-            <div className="flex flex-col mt-3">
-              <label>
-                <input
-                  className="w-5 mb-3 mr-1"
-                  value="M"
-                  onChange={(e) => genderSelect(e.target.value)}
-                  type="radio"
-                  checked={gender === "M"}
-                />
-                Masculino
-              </label>
-              <label>
-                <input
-                  onChange={(e) => genderSelect(e.target.value)}
-                  className="w-5 mr-1"
-                  value="F"
-                  type="radio"
-                  checked={gender === "F"}
-                />
-                Feminino
-              </label>
-            </div>
-          </div>
-          <div className="mt-3 pr-4">
-            <p className="font-semibold pb-2">Nascimento</p>
-            <input
-              min="2006/02/24"
-              max="2025/02/24"
-              ref={inputDate}
-              className="outline-sky-600 border border-zinc-200 p-1 mt-2 w-full"
-              type="date"
-            />
-          </div>
-          <div className="pr-4 mt-3">
-            <p className="font-semibold pb-2">País</p>
-            <OptionsCountry />
-          </div>
-          <div className="mt-3 pr-4">
-            <p className="font-semibold pb-2">Email</p>
-            <input
-              ref={inputEmail}
-              placeholder="Digite seu email"
-              className="outline-sky-600 border border-zinc-200 p-1 w-full"
-              type="email"
-            />
-          </div>
-          <div className="mt-3 pr-4">
-            <p className="font-semibold pb-2">Senha</p>
-            <input
-              ref={inputPassword}
-              placeholder="Digite sua senha"
-              className="outline-sky-600 border border-zinc-200 p-1 w-full"
-              type="password"
-            />
-          </div>
-          <div className="mt-3 pr-4">
-            <p className="font-semibold pb-1">Foto</p>
-            <input
-              onChange={(e) => imageFile(e.target.files[0])}
-              className="cursor-pointer"
-              type="file"
-            />
-          </div>
-          <div className="mt-3 pr-4 border-b border-zinc-200">
-            <label>
+            <div className="mt-2 pr-4">
+              <p className="font-semibold pb-2">Nome</p>
               <input
-                onChange={(e) => adminSelect(e.target.checked)}
-                className="w-5 mr-1 mt-2 mb-8"
-                type="checkbox"
+                ref={inputName}
+                className="outline-sky-600 border border-zinc-200 p-1 w-full"
+                placeholder="Digite o nome do usuário"
+                type="text"
               />
-              Administrador
-            </label>
-          </div>
-          <div className="mt-3 pr-6">
-            <button
-              onClick={()=>{
-                if( !inputName.current.value ||
-                  !inputDate.current.value ||
-                  !inputEmail.current.value ||
-                  !inputPassword.current.value ||
-                  !country) return
-                if(admin){
-                  updateCountAdmin()
-                  updateCountUser()
-                }
-                else{
-                  updateCountUser()
-                }
-              }}
-              className="text-white bg-users-modal h-9 w-20 border border-x-users-logo-color rounded-md"
-              type="submit"
-            >
-              Salvar
-            </button>
-          </div>
-        </form>
+            </div>
+            <div className="mt-4">
+              <div>
+                <p className="font-semibold pb-2">Gênero</p>
+              </div>
+              <div className="flex flex-col mt-3">
+                <label>
+                  <input
+                    className="w-5 mb-3 mr-1"
+                    value="M"
+                    onChange={(e) => genderSelect(e.target.value)}
+                    type="radio"
+                    checked={gender === "M"}
+                  />
+                  Masculino
+                </label>
+                <label>
+                  <input
+                    onChange={(e) => genderSelect(e.target.value)}
+                    className="w-5 mr-1"
+                    value="F"
+                    type="radio"
+                    checked={gender === "F"}
+                  />
+                  Feminino
+                </label>
+              </div>
+            </div>
+            <div className="mt-3 pr-4">
+              <p className="font-semibold pb-2">Nascimento</p>
+              <input
+                min="2006/02/24"
+                max="2025/02/24"
+                ref={inputDate}
+                className="outline-sky-600 border border-zinc-200 p-1 mt-2 w-full"
+                type="date"
+              />
+            </div>
+            <div className="pr-4 mt-3">
+              <p className="font-semibold pb-2">País</p>
+              <OptionsCountry />
+            </div>
+            <div className="mt-3 pr-4">
+              <p className="font-semibold pb-2">Email</p>
+              <input
+                ref={inputEmail}
+                placeholder="Digite seu email"
+                className="outline-sky-600 border border-zinc-200 p-1 w-full"
+                type="email"
+              />
+            </div>
+            <div className="mt-3 pr-4">
+              <p className="font-semibold pb-2">Senha</p>
+              <input
+                ref={inputPassword}
+                placeholder="Digite sua senha"
+                className="outline-sky-600 border border-zinc-200 p-1 w-full"
+                type="password"
+              />
+            </div>
+            <div className="mt-3 pr-4">
+              <p className="font-semibold pb-1">Foto</p>
+              <input
+                onChange={(e) => imageFile(e.target.files[0])}
+                className="cursor-pointer"
+                type="file"
+              />
+            </div>
+            <div className="mt-3 pr-4 border-b border-zinc-200">
+              <label>
+                <input
+                  onChange={(e) => adminSelect(e.target.checked)}
+                  className="w-5 mr-1 mt-2 mb-8"
+                  type="checkbox"
+                />
+                Administrador
+              </label>
+            </div>
+            <div className="mt-3 pr-6">
+              <button
+                onClick={()=>{
+                  if( !inputName.current.value ||
+                    !inputDate.current.value ||
+                    !inputEmail.current.value ||
+                    !inputPassword.current.value ||
+                    !country) return
+                  if(admin){
+                    updateCountAdmin()
+                    updateCountUser()
+                  }
+                  else{
+                    updateCountUser()
+                  }
+                }}
+                className="text-white bg-users-modal h-9 w-20 border border-x-users-logo-color rounded-md"
+                type="submit"
+              >
+                Salvar
+              </button>
+            </div>
+          </form>
+        </div>
+
       </div>
   );
 };

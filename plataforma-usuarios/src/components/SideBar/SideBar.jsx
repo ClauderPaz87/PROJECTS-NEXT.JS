@@ -6,10 +6,10 @@ import avatar5 from "../../../public/avatar5.png"
 
 const SideBar = () => {
   return (
-    <nav style={{height:"162.1vh"}} className="hidden md:flex flex-col w-56 bg-users-sidebar">
+    <nav className="hidden md:flex md:flex-col h-[150vh] absolute top-14 w-56  bg-users-sidebar">
         <div className="flex p-4">
            
-            <div className="ml-4 relative">
+            <div className="ml-7 relative">
                 <Image className="w-11 h-11 rounded-full absolute right-24 mr-6" src={avatar5} alt="Imagem padrão"/>
                 <p className="text-white font-semibold ml-6">Usuário Junior</p>
                 <p className="text-green-700 ml-5 flex items-center mt-1"><TbPointFilled size={20}/>

@@ -1,11 +1,12 @@
-import Footer from '../components/Footer/FooterUsers'
-import MainUsers from '../components/MainUsers/MainUsers'
+import TableUsers from "../components/MainUsers/TableUsers";
+import FormsUsers from "../components/MainUsers/FormsUsers";
+import UserAdmin from "../components/MainUsers/UserAdmin"
 
 export default function Home() {
   return (
-    <div className="divContainer">
-      <MainUsers/>
-      <Footer/>
+    <div className="grid grid-cols-1 lg:flex w-full ">
+      <TableUsers/>
+      <FormsUsers/>
     </div>
   );
 }

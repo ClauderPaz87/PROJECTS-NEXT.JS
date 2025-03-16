@@ -1,5 +1,6 @@
 import "./globals.css";
 import HeaderUsers from "@/components/Header/HeaderUsers";
+import SideBar from "../components/SideBar/SideBar";
 import { ToastContainer } from "react-toastify";
 
 export const metadata = {
@@ -25,8 +26,9 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" href="/avatar5.png"/>
       </head>
-      <body className={`antialiased`}>
+      <body className={`antialiased min-h-screen`}>
         <HeaderUsers />
+        <SideBar />
         <ToastContainer/>
         {children}
       </body>

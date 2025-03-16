@@ -1,14 +1,11 @@
 import { PiGreaterThanLight } from "react-icons/pi";
 import { FaHome } from "react-icons/fa";
 
-import TableUsers from "./TableUsers";
-import FormsUsers from "./FormsUsers";
-import UserAdmin from "../MainUsers/UserAdmin"
-import SideBar from "../SideBar/SideBar";
+
 
 const MainUsers = () => {
   return (
-    <main className="flex w-full h-full">
+    <main className="pl-4 pr-4 w-full h-full">
       
       <div>
         <SideBar/>
@@ -30,7 +27,7 @@ const MainUsers = () => {
         <UserAdmin className="relative"/>
       </div>
 
-      <div className="">
+      <div>
         <FormsUsers/>
       </div>
     </main>

@@ -50,3 +50,4 @@ next-env.d.ts
 # Outros arquivos temporários ou de log
 *.log
 *.tmp
+.vercel
