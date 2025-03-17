@@ -580,9 +580,6 @@
   .w-24 {
     width: calc(var(--spacing) * 24);
   }
-  .w-34 {
-    width: calc(var(--spacing) * 34);
-  }
   .w-36 {
     width: calc(var(--spacing) * 36);
   }
@@ -597,12 +594,6 @@
   }
   .w-\[94\%\] {
     width: 94%;
-  }
-  .w-\[120vw\] {
-    width: 120vw;
-  }
-  .w-\[150vw\] {
-    width: 150vw;
   }
   .w-fit {
     width: fit-content;
@@ -753,9 +744,6 @@
   }
   .overflow-auto {
     overflow: auto;
-  }
-  .overflow-hidden {
-    overflow: hidden;
   }
   .overflow-x-hidden {
     overflow-x: hidden;
@@ -1715,6 +1703,10 @@
       padding-top: calc(var(--spacing) * 6);
     }
   }
+}
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 :root {
   --radius: 0.625rem;

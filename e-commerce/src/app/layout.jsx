@@ -14,7 +14,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
-      <html lang="pt-br">
+      <html className="overflow-x-hidden" lang="pt-br">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
         <body
           className={cn(`min-h-screen bg-slate-700 antialiased overflow-x-hidden`,
             inter.className
