@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/Notebook/Downloads/NEXT-JS/e-commerce/src/app/layout.jsx"],"sourcesContent":["import \"./globals.css\";\nimport { Inter } from \"next/font/google\"\n\nexport const metadata = {\n  title: \"E-commerce\",\n  description: \"E-commerce feito com next.js\",\n};\n\nexport default function RootLayout({ children }) {\n  return (\n    <html lang=\"pt-br\">\n      <body\n        className={`antialiased min-h-screen bg-slate-700`}\n      >\n        {children}\n      </body>\n    </html>\n  );\n}\n"],"names":[],"mappings":";;;;;;;AAGO,MAAM,WAAW;IACtB,OAAO;IACP,aAAa;AACf;AAEe,SAAS,WAAW,EAAE,QAAQ,EAAE;IAC7C,qBACE,8OAAC;QAAK,MAAK;kBACT,cAAA,8OAAC;YACC,WAAW,CAAC,qCAAqC,CAAC;sBAEjD;;;;;;;;;;;AAIT","debugId":null}},
-    {"offset": {"line": 40, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/Notebook/Downloads/NEXT-JS/e-commerce/node_modules/next/src/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.ts"],"sourcesContent":["module.exports = require('../../module.compiled').vendored[\n  'react-rsc'\n].ReactJsxDevRuntime\n"],"names":["module","exports","require","vendored","ReactJsxDevRuntime"],"mappings":";AAAAA,OAAOC,OAAO,GAAGC,QAAQ,4HAAyBC,QAAQ,CACxD,YACD,CAACC,kBAAkB","ignoreList":[0],"debugId":null}}]
-}

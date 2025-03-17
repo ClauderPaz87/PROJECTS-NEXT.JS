@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <html lang="pt-br">
         <body
-          className={cn(`min-h-screen bg-slate-700 antialiased`,
+          className={cn(`min-h-screen bg-slate-700 antialiased overflow-x-hidden`,
             inter.className
           )}
         >
