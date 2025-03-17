@@ -69,10 +69,13 @@ const EditUser = () => {
 
   return (
     <div
-      style={{ width: "60vw" }}
-      className="bg-white shadow-sm rounded-sm absolute top-20 right-40 border-t-4 border-users-modal"
+      className="w-full rounded-sm mt-12 px-3 h-[110vh] flex lg:justify-center md:h-auto md:pl-60
+      md:justify-center"
     >
-      <form className="pt-3 pl-3 pb-3" onSubmit={handleSubmit}>
+      <form 
+      className="pt-3 pl-3 pb-3 bg-white shadow-sm border-t-4 border-users-modal w-full lg:w-[65vw] md:w-[60vw]
+      " 
+      onSubmit={handleSubmit}>
         <div className="border-b border-zinc-200 w-full">
           <p className="text-xl pb-2">Editar Usúario</p>
         </div>

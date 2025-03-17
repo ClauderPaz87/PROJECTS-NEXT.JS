@@ -6,7 +6,7 @@ import avatar5 from "../../../public/avatar5.png"
 
 const SideBar = () => {
   return (
-    <nav className="hidden md:flex md:flex-col h-[150vh] absolute top-14 w-56  bg-users-sidebar">
+    <nav className="hidden md:flex md:flex-col h-[150vh] md:h-[180vh] absolute top-14 w-56  bg-users-sidebar">
         <div className="flex p-4">
            
             <div className="ml-7 relative">
