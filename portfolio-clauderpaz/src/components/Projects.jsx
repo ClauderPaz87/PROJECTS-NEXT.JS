@@ -17,7 +17,7 @@ const Projects = () => {
 
       <div className="grid lg:grid-cols-2 xl:grid-cols-3 md:grid-cols-1 lg:px-44 gap-8">
 
-        <Link href="https://spiffy-alpaca-3a137e.netlify.app/" 
+        <Link href="https://projects-twitterclone.vercel.app/" 
         className="hover:shadow-xl hover:shadow-shadowImage hover:-translate-y-3 hover:scale-105 
         transition-all ease-linear w-72 mx-auto">
           <div>
