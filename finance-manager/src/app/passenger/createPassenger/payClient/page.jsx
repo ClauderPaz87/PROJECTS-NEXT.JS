@@ -35,7 +35,7 @@ const page = () => {
   }
       
   return (
-    <div className="flex justify-center items-center min-h-[80vh] pl-60">
+    <div className="flex justify-center w-[93vw] items-center min-h-[80vh] md:pl-60 md:w-[100vw] md:min-h-[80vh]">
       <Card className="bg-slate-900 border-0 shadow-sm text-white w-5xl h-96">
         <CardHeader>
           <CardTitle className="text-3xl font-light">Adicionar Passageiros</CardTitle>
@@ -44,7 +44,7 @@ const page = () => {
 
         <CardContent>
           <Form {...form}>
-            <form className="flex gap-4" onSubmit={form.handleSubmit(handleSubmitForm)}>
+            <form className="grid grid-cols-2 gap-2 ml-2 sm:grid sm:grid-cols-3 md:gap-3 md:grid-cols-2 xl:flex xl:gap-4" onSubmit={form.handleSubmit(handleSubmitForm)}>
             <FormField
               control={form.control}
               name="quantity"
@@ -101,23 +101,25 @@ const page = () => {
             <div>
               <Button
                 type="submit"
-                className="bg-pink-500 hover:bg-pink-400 absolute top-9/12 left-[89vw] cursor-pointer">
+                className="bg-pink-500 hover:bg-pink-400 mt-6 absolute top-[67vh] left-[50vw] cursor-pointer
+                sm:left-[80vw] sm:mt-0 md:left-[90vw] lg:left-[87vw] lg:top-[72vh]">
                 Avançar
               </Button>
               <Link href={`/passenger/createPassenger/`}>
                 <Button
                   variant={"secondary"}
                   type="button"
-                  className="absolute top-9/12 left-[83vw] cursor-pointer">
+                  className="absolute top-[67vh] left-[28vw] mt-6 cursor-pointer sm:left-[65vw] sm:mt-0
+                  md:left-[78vw] lg:left-[81vw] lg:top-[72vh] ">
                   Voltar
                 </Button>
               </Link>
             </div>
             </form>
             
-            <CardTitle className="text-2xl mt-7">Bagagem</CardTitle>
+            <CardTitle className="text-2xl mt-7 hidden lg:block">Bagagem</CardTitle>
 
-            <div className="flex flex-row gap-4">
+            <div className="flex flex-row gap-4 ml-2">
               <FormField
                 control={form.control}
                 name="volumes"
@@ -138,7 +140,7 @@ const page = () => {
                   <FormItem className="mt-2">
                     <FormLabel>Descrição</FormLabel>
                     <FormControl>
-                      <Input type="text" placeholder="Descrição" className="w-[55vw]" {...field}></Input>
+                      <Input type="text" placeholder="Descrição" className="w-56 md:w-64 lg:w-96" {...field}></Input>
                     </FormControl>
                     <FormMessage/>
                   </FormItem>

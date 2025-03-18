@@ -1,15 +1,7 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
   "/Trips/createTrips/page": "app/Trips/createTrips/page.js",
-  "/Drivers/page": "app/Drivers/page.js",
-  "/Trips/page": "app/Trips/page.js",
-  "/CardDashboard/page": "app/CardDashboard/page.js",
-  "/page": "app/page.js",
-  "/clientes/page": "app/clientes/page.js",
-  "/editTrip/[id]/page": "app/editTrip/[id]/page.js",
-  "/passenger/createPassenger/page": "app/passenger/createPassenger/page.js",
-  "/passenger/createPassenger/payClient/cityPassenger/page": "app/passenger/createPassenger/payClient/cityPassenger/page.js",
-  "/passenger/createPassenger/payClient/page": "app/passenger/createPassenger/payClient/page.js",
   "/passenger/page": "app/passenger/page.js",
-  "/taxi/page": "app/taxi/page.js"
+  "/passenger/createPassenger/page": "app/passenger/createPassenger/page.js",
+  "/passenger/createPassenger/payClient/page": "app/passenger/createPassenger/payClient/page.js",
+  "/passenger/createPassenger/payClient/cityPassenger/page": "app/passenger/createPassenger/payClient/cityPassenger/page.js"
 }

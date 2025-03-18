@@ -18,7 +18,8 @@ const page = () => {
   }
 
   return (
-    <div className="flex justify-center w-[95vw] items-center min-h-[80vh] md:pl-60 md:w-[100vw] md:min-h-[80vh]">
+    <div className="flex justify-center w-[95vw] items-center min-h-[80vh] md:pl-60 md:w-[100vw] md:min-h-[80vh]
+">
         <Card className="bg-slate-900 border-0 shadow-sm text-white w-5xl h-96">
             <CardHeader className="flex flex-row justify-between">
                 <CardTitle className="text-3xl ">Viagens</CardTitle>
@@ -27,26 +28,26 @@ const page = () => {
                 </Link>
             </CardHeader>
             <div className="border-b border-slate-700 mx-[21px]"></div>
-            <Table>
+            <Table className="flex sm:flex-col">
                 <TableHeader>
-                    <TableRow className="hover:bg-slate-900">
-                        <TableHead>Data de partida</TableHead>
+                    <TableRow className="hover:bg-slate-900 flex flex-col sm:flex-row w-full">
+                        <TableHead className="w-[10vw]">Data de partida</TableHead>
                         <TableHead>Data de retorno</TableHead>
-                        <TableHead className="w-[10vw]">Origem</TableHead>
-                        <TableHead>Retorno</TableHead>
-                        <TableHead className="w-[10vw] text-center">Placa</TableHead>
-                        <TableHead className="w-[20vw] text-center">Ações</TableHead>
+                        <TableHead className="w-[10vw] text-right">Origem</TableHead>
+                        <TableHead className="text-right w-[10vw]">Retorno</TableHead>
+                        <TableHead className="w-[18vw] text-center">Placa</TableHead>
+                        <TableHead className="w-[10vw] text-center">Ações</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
                     {trips.map((trip)=>(
-                        <TableRow key={trip.id} className="hover:bg-slate-900">
+                        <TableRow key={trip.id} className="hover:bg-slate-900 flex flex-col sm:flex-row w-full">
                             <TableCell>{format(new Date(trip.match), "PPP")}</TableCell>
                             <TableCell>{format(new Date(trip.retorno), "PPP")}</TableCell>
-                            <TableCell>{trip.origin}</TableCell>
-                            <TableCell>{trip.destiny}</TableCell>
-                            <TableCell className="text-center">{trip.place}</TableCell>
-                            <TableCell className="text-right">
+                            <TableCell className="w-[12vw] ml-6 text-center">{trip.origin}</TableCell>
+                            <TableCell className="w-[8vw] text-center ">{trip.destiny}</TableCell>
+                            <TableCell className="w-[10vw] text-right">{trip.place}</TableCell>
+                            <TableCell className="pl-10 text-right">
                                 <Button 
                                 onClick={()=>{router.push(`/passenger`)}}
                                 className="bg-slate-900 text-blue-700 border border-blue-800 

@@ -57,14 +57,16 @@ const SelectClient = () => {
         <Button
           onClick={advanced}
           type="button"
-          className="bg-pink-500 hover:bg-pink-400 absolute top-9/12 left-[88vw] cursor-pointer">
+          className="bg-pink-500 hover:bg-pink-400 absolute top-[68vh] left-[77vw] mt-5 cursor-pointer 
+          sm:left-[83vw] sm:mt-0 md:left-[85vw] lg:left-[89vw] lg:top-[68vh]">
           Avançar
         </Button>
         <Link href={`/passenger`}>
           <Button
             variant={"secondary"}
             type="button"
-            className="absolute top-9/12 left-[82vw] cursor-pointer">
+            className="absolute top-[68vh] left-[61vw] mt-5 cursor-pointer sm:left-[71vw] sm:mt-0
+            md:left-[75vw] lg:left-[83vw] lg:top-[68vh]">
             Voltar
           </Button>
         </Link>

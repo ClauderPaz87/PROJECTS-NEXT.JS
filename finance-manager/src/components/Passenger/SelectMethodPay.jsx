@@ -10,7 +10,7 @@ const SelectMethodPay = ({field}) => {
 
       <div>
         <Select onValueChange={field.onChange}>
-            <SelectTrigger className="w-72">
+            <SelectTrigger className="w-44 md:w-72">
               <SelectValue placeholder="Selecione"/>
             </SelectTrigger>
             <SelectContent  className="bg-slate-950 text-white" >
@@ -22,24 +22,6 @@ const SelectMethodPay = ({field}) => {
                 <SelectItem value="pending">Pendente</SelectItem>
             </SelectContent>
           </Select>
-      </div>
-
-      <div>
-        <Link href={`/passenger/createPassenger/payClient`}>
-          <Button
-            type="button"
-            className="bg-pink-500 hover:bg-pink-400 absolute top-9/12 left-[89vw] cursor-pointer">
-            Avançar
-          </Button>
-        </Link>
-        <Link href={`/passenger/createPassenger/payClient/`}>
-          <Button
-            variant={"secondary"}
-            type="button"
-            className="absolute top-9/12 left-[83vw] cursor-pointer">
-            Voltar
-          </Button>
-        </Link>
       </div>
 
     </div>

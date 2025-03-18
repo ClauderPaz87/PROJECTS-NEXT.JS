@@ -9,9 +9,9 @@ const SelectTaxi = ({field,form}) => {
   return (
     <div className="flex flex-row gap-10">
 
-      <div>
+      <div >
         <Select onValueChange={field.onChange}>
-            <SelectTrigger className="w-72">
+            <SelectTrigger className="w-44 lg:w-72">
               <SelectValue placeholder="Taxi"/>
             </SelectTrigger>
             <SelectContent  className="bg-slate-950 text-white" >

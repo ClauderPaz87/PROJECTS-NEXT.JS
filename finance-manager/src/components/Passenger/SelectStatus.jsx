@@ -8,7 +8,7 @@ const SelectStatus = ({field}) => {
 
       <div>
         <Select onValueChange={field.onChange}>
-            <SelectTrigger className="w-72">
+            <SelectTrigger className="w-44 md:w-72">
               <SelectValue placeholder="Selecione"/>
             </SelectTrigger>
             <SelectContent  className="bg-slate-950 text-white" >

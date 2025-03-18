@@ -50,7 +50,7 @@ const page = () => {
   }
       
   return (
-    <div className="flex justify-center items-center min-h-[80vh] pl-60">
+    <div className="flex justify-center w-[95vw] items-center min-h-[80vh] md:pl-60 md:w-[100vw] md:min-h-[80vh]">
       <Card className="bg-slate-900 border-0 shadow-sm text-white w-5xl h-96">
         <CardHeader>
           <CardTitle className="text-3xl font-light">Adicionar Passageiros</CardTitle>
@@ -59,8 +59,9 @@ const page = () => {
 
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSubmitForm)}>
-            <div className="flex gap-4" >
+            <form 
+            onSubmit={form.handleSubmit(handleSubmitForm)}>
+            <div className="grid grid-cols-2 gap-2 sm:grid sm:grid-cols-3 md:gap-5 md:grid-cols-3 xl:flex"  >
               <FormField
                 control={form.control}
                 name="city"
@@ -128,7 +129,7 @@ const page = () => {
               />
             </div>
 
-            <div>
+            <div className="mt-7 absolute bottom-[222px] left-[243px] sm:relative sm:bottom-0 sm:left-0">
               <FormField
                 control={form.control}
                 name="taxi"
@@ -147,7 +148,8 @@ const page = () => {
             <div>
               <Button
                 type="submit"
-                className="bg-pink-500 hover:bg-pink-400 absolute top-9/12 left-[89vw] cursor-pointer">
+                className="bg-pink-500 hover:bg-pink-400 mt-5 absolute top-8/12 left-[50vw] cursor-pointer
+                sm:left-[80vw] sm:mt-0 md:left-[90vw]">
                 Salvar
               </Button>
 
@@ -155,7 +157,8 @@ const page = () => {
                 <Button
                   variant={"secondary"}
                   type="button"
-                  className="absolute top-9/12 left-[83vw] cursor-pointer">
+                  className="absolute top-8/12 left-[28vw] mt-5 cursor-pointer sm:left-[65vw] sm:mt-0
+                  md:left-[78vw] lg:left-[81vw]">
                   Voltar
                 </Button>
               </Link>
