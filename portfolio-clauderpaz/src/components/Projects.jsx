@@ -41,7 +41,7 @@ const Projects = () => {
           <div className="bg-gray-800 rounded-b-md max-w-80 backdrop-blur-md p-4">
             <p className="font-bold text-2xl text-colorLight mb-3">Plataforma de usuários</p>
             <p className="text-colorLight h-24">
-              Projeto de usuários com funcionalidades, e um formulário mais avançado.
+              Projeto de usuários com funcionalidades, e um formulário mais avançado e com os dados dentro de um banco de dados.
             </p>
           </div>
         </Link>
