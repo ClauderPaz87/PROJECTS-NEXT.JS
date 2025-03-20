@@ -3,10 +3,17 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { usePlatformUsers } from "../../store/PlatformUsers";
 import avatar5 from "../../../public/avatar5.png";
+import { useEffect } from "react";
 
 const TableUsers = () => {
-  const { deleteUsers, users, setEditingUser } = usePlatformUsers();
+  const { deleteUsers, users, setEditingUser,fetchUsers } = usePlatformUsers();
   const router = useRouter();
+
+  useEffect(() => {
+    fetchUsers()
+  }, [fetchUsers])
+  
+  
 
   const editUser = (user) => {
     setEditingUser(user);

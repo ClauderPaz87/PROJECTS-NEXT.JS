@@ -4,6 +4,7 @@ import OptionsCountry from "./OptionsCountry";
 import { usePlatformUsers } from "../../store/PlatformUsers";
 import { toast } from "react-toastify";
 import UserAdmin from "./UserAdmin";
+import api from "@/lib/api";
 
 const FormsUsers = () => {
   const {
@@ -24,7 +25,7 @@ const FormsUsers = () => {
   const inputEmail = useRef("");
   const inputPassword = useRef("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if(
@@ -39,6 +40,16 @@ const FormsUsers = () => {
           closeOnClick:true,
         })
       } 
+    
+    await api.post('/users',{
+      name: inputName.current.value,
+      country: country,
+      email: inputEmail.current.value,
+      password: inputPassword.current.value,
+      birthDate: inputDate.current.value,
+      isAdmin : admin,
+    })
+    
 
     addUsers(
       inputName.current.value,

@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { useRouter, useParams } from "next/navigation";
 import { usePlatformUsers } from "@/store/PlatformUsers";
 import OptionsCountry from "@/components/MainUsers/OptionsCountry";
+import api from "@/lib/api";
 
 const EditUser = () => {
   const router = useRouter();
@@ -31,7 +32,7 @@ const EditUser = () => {
   const inputEmail = useRef("");
   const inputPassword = useRef("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (
@@ -47,6 +48,16 @@ const EditUser = () => {
         closeOnClick: true,
       });
     }
+
+    await api.put(`/users/${editingUser.id}`,{
+          id: editingUser.id,
+          name: inputName.current.value,
+          country: country,
+          email: inputEmail.current.value,
+          password: inputPassword.current.value,
+          birthDate: inputDate.current.value,
+          isAdmin: true
+        })
 
     editUser(
       editingUser.id,
