@@ -10,7 +10,7 @@ import Link from "next/link"
 
 const Projects = () => {
   return (
-    <div id="projetos" className="mt-24 min-h-screen w-full">
+    <div id="projetos" className="mt-32 min-h-screen w-full">
 
       <div className="mb-16 flex justify-center">
         <p className="text-5xl font-extrabold text-colorLight">Meus Projetos</p>
