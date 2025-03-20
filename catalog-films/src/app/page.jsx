@@ -1,5 +1,4 @@
-import ApiFilms from "@/components/Films/apiFilms";
-
+import ApiFilms from "../components/Films/ApiFilms";
 
 export default function Home() {
   return (

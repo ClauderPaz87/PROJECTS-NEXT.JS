@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import ListFilms from './ListFilms'
 
-const ApiFilms = async () => {
+const apiFilms = async () => {
   
   const getMovies = async ()=>{
     const response = await axios({
@@ -46,4 +46,4 @@ const ApiFilms = async () => {
   )
 }
 
-export default ApiFilms
+export default apiFilms
