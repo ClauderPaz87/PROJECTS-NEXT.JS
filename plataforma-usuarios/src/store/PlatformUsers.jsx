@@ -16,7 +16,13 @@ export const usePlatformUsers = create((set) => ({
   fetchUsers: async () => {
     try {
       const response = await api.get('/users');
-      set({ users: response.data });
+
+      const formattedUsers = response.data.map(user => ({
+      ...user,
+      date: user.birthDate ? new Date(user.birthDate).toISOString().split("T")[0] : "", 
+    }));
+
+    set({ users: formattedUsers });
     } catch (error) {
       console.error('Erro ao buscar usuários:', error);
       toast.error('Erro ao carregar usuários', {
@@ -35,7 +41,7 @@ export const usePlatformUsers = create((set) => ({
           id: v4(),
           name,
           gender,
-          date,
+          date: new Date(date).toISOString(),
           country,
           email,
           password,
@@ -52,7 +58,7 @@ export const usePlatformUsers = create((set) => ({
               id: id,
               name: name,
               gender: gender,
-              date: date,
+              date: new Date(date).toISOString(),
               country:country,
               email: email,
               password: password,
