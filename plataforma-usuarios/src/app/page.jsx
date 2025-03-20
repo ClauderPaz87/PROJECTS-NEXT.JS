@@ -1,6 +1,5 @@
 import TableUsers from "../components/MainUsers/TableUsers";
 import FormsUsers from "../components/MainUsers/FormsUsers";
-import UserAdmin from "../components/MainUsers/UserAdmin"
 
 export default function Home() {
   return (
