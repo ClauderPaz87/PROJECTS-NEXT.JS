@@ -107,7 +107,7 @@ const Projects = () => {
             <Image src={streamer} className="h-52 max-w-full object-cover rounded-t-xl"/>
           </div>
           <div className="bg-gray-800 rounded-b-md max-w-80 backdrop-blur-md p-4">
-            <p className="font-bold text-2xl text-colorLight mb-3">E-commerce</p>
+            <p className="font-bold text-2xl text-colorLight mb-3">Streamer</p>
             <p className="text-colorLight h-24">
               Um projeto de filmes feito com consumo de api com ferramentas inteligentes e responsivo
             </p>
