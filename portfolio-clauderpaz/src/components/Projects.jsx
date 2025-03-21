@@ -6,6 +6,7 @@ import dashgo from "../../public/projeto_dashgo.png"
 import dashboard from "../../public/projeto_dashboard.png"
 import ecommerce from "../../public/projeto_ecommerce.png"
 import streamer from "../../public/projeto_streamer.png"
+import control from "../../public/projeto_control.png"
 import Link from "next/link"
 
 const Projects = () => {
@@ -110,6 +111,19 @@ const Projects = () => {
             <p className="font-bold text-2xl text-colorLight mb-3">Streamer</p>
             <p className="text-colorLight h-24">
               Um projeto de filmes feito com consumo de api com ferramentas inteligentes e responsivo
+            </p>
+          </div>
+        </Link>
+        <Link href="https://projeto-controlfinance.vercel.app/" 
+        className="hover:shadow-xl hover:shadow-shadowImage hover:-translate-y-3 hover:scale-105 transition-all ease-linear
+        w-72 mx-auto">
+          <div>
+            <Image src={control} className="h-52 max-w-full object-cover rounded-t-xl"/>
+          </div>
+          <div className="bg-gray-800 rounded-b-md max-w-80 backdrop-blur-md p-4">
+            <p className="font-bold text-2xl text-colorLight mb-3">Controle Financeiro</p>
+            <p className="text-colorLight h-24">
+              Um projeto de controle financeiro de forma rápida e simples.
             </p>
           </div>
         </Link>
