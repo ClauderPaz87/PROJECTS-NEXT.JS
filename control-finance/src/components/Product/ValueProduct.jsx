@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, CardHeader } from "../ui/card";
 import { Form,FormControl,FormDescription,FormField,FormItem,FormLabel,FormMessage} from "../ui/form";
 import { Input } from "../ui/input";
@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Select,SelectContent,SelectItem,SelectTrigger,SelectValue } from "../ui/select";
 import ValueTotal from "./ValueTotal";
+import { useControlStore } from "@/store/ControlStore";
 
    
 const formSchema = z.object({
@@ -19,14 +20,25 @@ const formSchema = z.object({
 });
 
 const ValueProduct = () => {
+  const { addProductEntries, addProductExits, addProductAll } = useControlStore()
   const form = useForm({
     resolver: zodResolver(formSchema),
   });
 
   const formSubmit = (data) => {
-    console.log("deae");
+    if(data.typeValue === "entries"){
+      addProductEntries(data.description, data.value, data.typeValue)
+      addProductAll(data.description, data.value, data.typeValue)
+      return
+    }
+    else if(data.typeValue === "exits"){
+      addProductExits(data.description, data.value, data.typeValue)
+      addProductAll(data.description, data.value, data.typeValue)
+      return
+    }
+       
   };
-
+  
   return (
     <div className="mt-7 flex flex-col pl-24">
 
@@ -76,8 +88,8 @@ const ValueProduct = () => {
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              <SelectItem value="m@example.com">Entrada</SelectItem>
-                              <SelectItem value="m@google.com">Saída</SelectItem>
+                              <SelectItem value="entries">Entrada</SelectItem>
+                              <SelectItem value="exits">Saída</SelectItem>
                             </SelectContent>
                           </Select>
                           <FormMessage />
