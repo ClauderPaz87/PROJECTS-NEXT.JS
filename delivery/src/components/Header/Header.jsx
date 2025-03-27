@@ -55,7 +55,7 @@ const HeaderContent = () => {
               >
                 {foods.length}
               </span>
-              <SheetTrigger className="cursor-pointer mr-9 md:mr-4">
+              <SheetTrigger className="cursor-pointer mr-4 sm:mr-9 md:mr-4">
                 <span>
                   <ShoppingCart />
                 </span>

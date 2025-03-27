@@ -35,7 +35,8 @@ export function SearchInput() {
 
   return (
     <Suspense fallback={<div className="w-[80vw] h-10 bg-gray-200 animate-pulse rounded-full"></div>}>
-      <div className="sm:pr-10 flex flex-row-reverse items-center w-[80vw] sm:w-xl md:w-2xl xl:w-3xl xl:pr-0 lg:w-2xl">
+      <div className="sm:pr-10 flex flex-row-reverse items-center w-[80vw] sm:w-xl md:w-2xl xl:w-3xl xl:pr-0 
+      lg:w-2xl">
         <Input
           onChange={handleSearch}
           value={searchInput}
