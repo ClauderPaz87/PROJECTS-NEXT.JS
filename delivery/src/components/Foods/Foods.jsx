@@ -49,7 +49,7 @@ const FoodsContent = () => {
       </div>
       
       <div className='flex justify-center mt-5 w-full'>
-        <div className='grid grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-16'>
+        <div className='grid grid-cols-2 lg:grid-cols-6 gap-4 sm:gap-16'>
           {objectFood.map((food) => (
             <PrimaryCard key={food.id} food={food}/>
           ))}                
@@ -57,8 +57,8 @@ const FoodsContent = () => {
       </div>
 
       <div className='flex justify-center w-full mt-16 md:mt-8'>
-        <div className='grid grid-cols-2 gap-16 md:mr-5 md:ml-0 md:grid-cols-3 md:gap-10 lg:gap-16
-        lg:grid-cols-4 xl:grid-cols-5 ml-4 mr-16 lg:px-8'>
+        <div className='grid grid-cols-1 gap-16 md:mr-5 md:ml-0 md:grid-cols-3 md:gap-10 lg:gap-16
+        lg:grid-cols-4 xl:grid-cols-5 lg:px-8'>
           {foods.length > 0 ? (
             foods.map((food) => (                  
               <CardsFood key={food.id} food={food} />

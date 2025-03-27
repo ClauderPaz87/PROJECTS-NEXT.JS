@@ -96,7 +96,7 @@ const HeaderContent = () => {
 const Header = () => {
   return (
     <Suspense fallback={<div className="w-[80vw] h-10 bg-gray-200 animate-pulse rounded-full"></div>}>
-      <SearchInput />
+      <HeaderContent/>
     </Suspense>
   )
 }
