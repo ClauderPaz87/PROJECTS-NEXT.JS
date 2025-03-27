@@ -6,7 +6,7 @@ import motoboy from '../../../public/image_person-motoboy.jpg.png'
 
 const CardDelivery = () => {
   return (
-    <div className='mt-3 mx-8 h-[25vh]'>
+    <div className='mt-3 mx-8 h-44'>
         <Card className="h-full rounded-sm bg-orange-100 border-0 p-5">
             <div className='flex justify-between h-full'>
                 <div className='flex flex-col w-80'>

@@ -1,10 +1,10 @@
-import CardFoods from "@/components/Foods/CardDelivery";
+import CardDelivery from "@/components/Foods/CardDelivery";
 import Foods from "@/components/Foods/Foods";
 
-export default function Home({searchParams }) {
+export default function Home() {
   return (
     <div>
-      <CardFoods/>
+      <CardDelivery/>
       <Foods/>
     </div>
   );
