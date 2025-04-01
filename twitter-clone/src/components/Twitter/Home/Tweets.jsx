@@ -2,9 +2,11 @@ import Image from "next/image";
 import profile from "../../../../public/image_profile.png";
 import {
   ChartColumnDecreasing,
+  Delete,
   Download,
   Heart,
   MessageSquare,
+  MoreHorizontal,
   MoreHorizontalIcon,
   RefreshCcw,
 } from "lucide-react";
@@ -13,9 +15,10 @@ import { useUser } from "@clerk/nextjs";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../../ui/tooltip";
 import DialogReploy from "./DialogReploy";
 import Link from "next/link";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 const Tweets = () => {
-  const { tweets, clickLike, clickCommenter, likeComment } = useTwitterStore();
+  const { tweets, clickLike, clickCommenter, likeComment, deleteTweet } = useTwitterStore();
   const { user } = useUser();
   const sortedTweets = [...tweets].sort(
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
@@ -39,7 +42,9 @@ const Tweets = () => {
                   className="w-12 h-12 mr-2 rounded-full"
                 />
                 <p className="text-zinc-100">{comment.name}</p>
-                <p className="text-sm text-zinc-400">@{comment.name} - 2m</p>
+                <p className="text-sm text-zinc-400">
+                  @{comment.name} - {tweet.date}
+                </p>
               </div>
               <div className="flex h-auto items-center">
                 <button type="button" className="cursor-pointer">
@@ -171,7 +176,21 @@ const Tweets = () => {
             <div className="flex h-auto items-center">
               <button type="button" className="cursor-pointer">
                 <span>
-                  <MoreHorizontalIcon className="text-blue-400" />
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <button className="cursor-pointer" variant="outline">
+                        <MoreHorizontal className="text-blue-500" />
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-44 p-1 border-0 rounded-sm bg-slate-950">
+                      <button
+                        onClick={()=>deleteTweet(tweet.id)}
+                        className=" text-red-700 rounded-md cursor-pointer flex gap-1.5"
+                      >
+                        <span><Delete/></span>Delete Post
+                      </button>
+                    </PopoverContent>
+                  </Popover>
                 </span>
               </button>
             </div>
@@ -186,22 +205,22 @@ const Tweets = () => {
             <Image
               src={tweet.tweetImage}
               alt="Tweet image"
-              width={150}
+              width={700}
               height={100}
               className="w-full h-96 rounded-md mt-2"
             />
           )}
           {tweet.tweetVideo && (
-              <div className="mt-4">
-                 <video
-                  src={tweet.tweetVideo}
-                  controls
-                  className="w-full h-auto rounded-md mt-2"
-                />
-              </div>
+            <div className="mt-4">
+              <video
+                src={tweet.tweetVideo}
+                controls
+                className="w-full h-auto rounded-md mt-2"
+              />
+            </div>
           )}
 
-          <div className="flex mt-8 pl-10 md:pl-17 gap-10 sm:gap-20 md:gap-16 lg:gap-10 xl:gap-20">
+          <div className="flex mt-8 pl-10 md:pl-17 gap-10 sm:gap-20 md:gap-16 lg:gap-10 xl:gap-18">
             <Tooltip>
               <TooltipTrigger
                 className="gap-1.5 flex h-auto items-center"

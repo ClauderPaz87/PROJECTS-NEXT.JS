@@ -25,7 +25,8 @@ const HomeTwitter = () => {
   };
  
   const onSubmit = (data)=>{
-    addTweets(user.firstName, data.post, profile,file || null, fileVideo || null )
+    const date = new Date().toLocaleString([], { hour:"2-digit", minute:"2-digit"})
+    addTweets(user.firstName, date , data.post, profile,file || null, fileVideo || null )
     form.reset()
   }
 

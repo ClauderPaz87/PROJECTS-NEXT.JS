@@ -11,13 +11,14 @@ export const useTwitterStore = create((set) => ({
   fileVideo: "",
   fileVideoPreview:"",
 
-  addTweets: (name, post, image, tweetImage,tweetVideo) => {
+  addTweets: (name,date, post, image, tweetImage,tweetVideo) => {
     set((state) => ({
       tweets: [
         ...state.tweets,
         {
           id: v4(),
           name,
+          date,
           post,
           image,
           tweetImage: tweetImage ? URL.createObjectURL(tweetImage) : null,
@@ -109,15 +110,17 @@ export const useTwitterStore = create((set) => ({
   closeDialog: () => set({ isDialogOpen: false }),
   nextStep: () => set((state) => ({ step: state.step + 1 })),
 
-  addRandomTweets: (name, post, image) => {
+  addRandomTweets: (name,date, post, image, tweetImage) => {
     set((state) => ({
       randomTweets: [
         ...state.randomTweets,
         {
           id: v4(),
           name,
+          date,
           post,
           image,
+          tweetImage,
           like: false,
           dialogCommenter: false,
           comments: [],
@@ -153,5 +156,11 @@ export const useTwitterStore = create((set) => ({
       });
     }
   },
+
+  deleteTweet: (id)=>{
+    set((state)=>({
+        tweets: state.tweets.filter((tweet)=>tweet.id !== id)
+    }))
+  }
 
 }));

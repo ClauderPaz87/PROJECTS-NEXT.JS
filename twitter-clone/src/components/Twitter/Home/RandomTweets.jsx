@@ -88,16 +88,25 @@ const RandomTweets = () => {
         "Ricardo Sampaio", "Luana Xavier", "Marcelo Vasques", "Cláudia Amaral",
         "Daniel Farias", "Cecília Andrade"
     ]
-    
+
+    const date = new Date().toLocaleString([], { hour:"2-digit", minute:"2-digit"})
+
+    const randomImage =  `https://picsum.photos/200/300?random=${Math.random()}`
+    const random = Math.random() > 0.4 ? randomImage : null
+
     const mathRandom = RandomTweetsMath[Math.floor(Math.random() * RandomTweetsMath.length)];
     const mathRandomNames = randomNames[Math.floor(Math.random() * randomNames.length)];
-    addRandomTweets(mathRandomNames,mathRandom,user.imageUrl)
+
+    const seed = Math.random().toString(36).substring(7);
+    const avatarUrl = `https://api.dicebear.com/7.x/pixel-art/png?seed=${seed}`;
+
+    addRandomTweets(mathRandomNames,date,mathRandom,avatarUrl,random)
   }
 
   useEffect(() => {
     const interval = setInterval(() => {
         addRandomTweetsTwitter();
-    }, 25000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -117,7 +126,7 @@ const RandomTweets = () => {
                   className="w-12 h-12 mr-2 rounded-full"
                 />
                 <p className="text-zinc-100">{user.firstName}</p>
-                <p className="text-sm text-zinc-400">@{user.firstName} - 2m</p>
+                <p className="text-sm text-zinc-400">@{user.firstName} - {tweet.date}</p>
               </div>
             </div>
             <div>
@@ -184,9 +193,9 @@ const RandomTweets = () => {
             <div className="flex gap-3 h-auto items-center">
               <Link href={`/twitter/randomTwitter/${tweet.id}`}>
                 <Image
-                  src={user ? user.imageUrl : profile }
+                  src={tweet.image}
                   alt="Image"
-                  width={300}
+                  width={700}
                   height={100}
                   className="w-12 h-12 mr-2 rounded-full"
                 />
@@ -199,7 +208,19 @@ const RandomTweets = () => {
           <div className="mt-2 pl-17 w-full h-full">
             <p className="text-zinc-100 break-words whitespace-normal">{tweet.post}</p>
           </div>
-          <div className="flex mt-8 pl-10 md:pl-17 gap-10 sm:gap-20 md:gap-16 lg:gap-10 xl:gap-20">
+          {tweet.tweetImage && 
+            <div>
+              <Image
+                src={tweet.tweetImage}
+                alt="Tweet image"
+                width={700}
+                height={200}
+                className="w-full h-96 rounded-md mt-2"
+              />
+            </div>
+          }
+         
+          <div className="flex mt-8 pl-10 md:pl-17 gap-10 sm:gap-20 md:gap-16 lg:gap-10 xl:gap-18">
             <Tooltip>
                 <TooltipTrigger className="gap-1.5 flex h-auto items-center" 
                 asChild>

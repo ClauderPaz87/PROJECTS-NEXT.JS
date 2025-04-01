@@ -1,8 +1,19 @@
 "use client";
-import {Tooltip,TooltipContent,TooltipTrigger,} from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { useTwitterStore } from "@/store/TwitterStore";
 import { useUser } from "@clerk/nextjs";
-import {ChartColumnDecreasing, Download,Heart,MessageSquare,MoreHorizontalIcon,RefreshCcw,} from "lucide-react";
+import {
+  ChartColumnDecreasing,
+  Download,
+  Heart,
+  MessageSquare,
+  MoreHorizontalIcon,
+  RefreshCcw,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import profile from "../../../../../public/image_profile.png";
@@ -10,8 +21,9 @@ import { useParams } from "next/navigation";
 import DialogUnique2 from "@/components/Twitter/Home/DialogUnique2";
 
 const page = () => {
-  const params = useParams()
-  const { randomTweets, clickLike, likeComment,clickCommenterUnique2 } = useTwitterStore();
+  const params = useParams();
+  const { randomTweets, clickLike, likeComment, clickCommenterUnique2 } =
+    useTwitterStore();
   const { user } = useUser();
   const tweetId = randomTweets.find((tweet) => tweet.id === params.id);
   const date = new Date();
@@ -34,9 +46,9 @@ const page = () => {
             <div className="flex gap-3 h-auto items-center">
               <Link href={`/twitter/home`}>
                 <Image
-                  src={user ? user.imageUrl : profile}
+                  src={tweetId.image}
                   alt="Image"
-                  width={300}
+                  width={700}
                   height={100}
                   className="w-12 h-12 mr-2 rounded-full"
                 />
@@ -55,11 +67,24 @@ const page = () => {
               </button>
             </div>
           </div>
+
           <div className="mt-2 pl-17">
             <p className="text-zinc-100 break-words whitespace-normal">
               {tweetId.post}
             </p>
           </div>
+          {tweetId.tweetImage && (
+            <div>
+              <Image
+                src={tweetId.tweetImage}
+                alt="Tweet image"
+                width={700}
+                height={200}
+                className="w-full h-96 rounded-md mt-2"
+              />
+            </div>
+          )}
+
           <div className="flex mt-8 pl-17 gap-10 sm:gap-20 md:gap-16 lg:gap-10 xl:gap-20">
             <Tooltip>
               <TooltipTrigger asChild>
@@ -197,7 +222,7 @@ const page = () => {
             </div>
           ))}
         </div>
-        <DialogUnique2 tweet={tweetId}/>
+        <DialogUnique2 tweet={tweetId} />
       </div>
     </div>
   );
