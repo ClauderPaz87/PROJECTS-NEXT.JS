@@ -31,7 +31,7 @@ const HomeTwitter = () => {
   }
 
   return (
-    <div className="flex flex-col p-5 w-full sm:w-full sm:pl-20 lg:w-[45vw] border-l border-l-zinc-600 
+    <div className="flex flex-col p-5 w-full sm:w-full sm:pl-20 md:p-5 lg:w-[45vw] border-l border-l-zinc-600 
     border-r border-r-zinc-600 min-h-screen">
       <div>
         <p className="font-medium text-lg text-white">Home</p>
