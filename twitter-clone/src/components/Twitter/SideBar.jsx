@@ -19,7 +19,7 @@ const SideBar = () => {
 
   return (
     <div
-      className="w-16 lg:w-[80vw] md:w-[30vw] md:flex justify-center min-h-screen"
+      className="lg:w-[80vw] md:w-[30vw] md:flex justify-center min-h-screen"
     >
       <SideBarMobile />
 
