@@ -91,7 +91,7 @@ const Tweets = () => {
               </div>
             )}
 
-            <div className="flex mt-2.5 pl-10 md:pl-17 mb-2 gap-10 sm:gap-20 md:gap-16 lg:gap-10 xl:gap-20">
+            <div className="flex mt-2.5 pl-8 md:pl-17 mb-2 gap-8 sm:gap-20 md:gap-16 lg:gap-10 xl:gap-20">
               <Tooltip>
                 <TooltipTrigger asChild>
                   <button type="button" className="cursor-pointer">
@@ -220,7 +220,7 @@ const Tweets = () => {
             </div>
           )}
 
-          <div className="flex mt-8 pl-10 md:pl-17 gap-10 sm:gap-20 md:gap-16 lg:gap-10 xl:gap-18">
+          <div className="flex mt-8 pl-8 md:pl-17 gap-8 sm:gap-20 md:gap-16 lg:gap-10 xl:gap-18">
             <Tooltip>
               <TooltipTrigger
                 className="gap-1.5 flex h-auto items-center"
