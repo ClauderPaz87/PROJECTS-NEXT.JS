@@ -89,7 +89,7 @@ const Projects = () => {
             </p>
           </div>
         </Link>
-        <Link href="https://projeto-ecommerce-pied.vercel.app/" 
+        <Link href="https://projeto-ecommerce-eight.vercel.app/" 
         className="hover:shadow-xl hover:shadow-shadowImage hover:-translate-y-3 hover:scale-105 transition-all ease-linear
         w-72 mx-auto">
           <div>
@@ -98,7 +98,7 @@ const Projects = () => {
           <div className="bg-gray-800 rounded-b-md max-w-80 backdrop-blur-md p-4">
             <p className="font-bold text-2xl text-colorLight mb-3">E-commerce</p>
             <p className="text-colorLight h-24">
-              Um e-commerce com ferramentas inteligentes e responsivo
+              Um e-commerce com ferramentas inteligentes e responsivo, baseado no mercado livre.
             </p>
           </div>
         </Link>
