@@ -1,12 +1,9 @@
-import Products from "@/components/Products/Products";
-import { ClerkProvider } from "@clerk/nextjs";
+import Products from "@/components/products/Products";
 
 export default function Home() {
   return (
-    <ClerkProvider>
-      <div>
-        <Products/>
-      </div>
-    </ClerkProvider>
+    <div>
+      <Products/>
+    </div>
   );
 }

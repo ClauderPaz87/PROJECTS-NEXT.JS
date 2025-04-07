@@ -1,33 +1,40 @@
-import "./globals.css";
-import { Inter } from "next/font/google"
-import { cn } from "@/lib/utils";
-import { ClerkProvider } from "@clerk/nextjs";
-import Header from "@/components/Header/Header";
+// app/layout.jsx
 
-const inter = Inter({subsets: ['latin']});
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { cn } from "@/lib/utils";
+import Header from "@/components/Header/Header";
+import { ClerkProvider } from "@clerk/nextjs";
+import { ToastContainer } from "react-toastify";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "E-commerce",
-  description: "E-commerce feito com next.js",
+  description: "Projeto e-commerce criado com next.js",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
-      <html className="overflow-x-hidden" lang="pt-br">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <html lang="pt">
+      <head >
+        <meta name="googlebot" content="notranslate" />
+        <meta name="google" content="notranslate" />
       </head>
-        <body
-          className={cn(`min-h-screen bg-slate-700 antialiased overflow-x-hidden`,
-            inter.className
-          )}
-        >
-          <Header/>
+      <body
+        className={cn(
+          "antialiased min-h-screen bg-[#EBEBEB] overflow-x-hidden",
+          inter.className
+        )}
+        translate="no"
+        suppressHydrationWarning
+      >
+        <ClerkProvider>
+          <Header />
           {children}
-        </body>
-      </html>
-    </ClerkProvider>
-      
+          <ToastContainer />
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }
