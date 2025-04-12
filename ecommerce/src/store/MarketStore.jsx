@@ -23,14 +23,21 @@ export const useMarkeStore = create(
             throw new Error("Falha ao buscar produtos");
           }
           const data = await response.json();
-          const dataProducts = data.map((d) => ({
-            ...d,
-            unity: 1,
-            originPrice: d.price,
-            disabledButton: false,
-          }));
-
-          set((state) => ({ products: dataProducts }));
+      
+          const currentProducts = get().products;
+      
+          const dataProducts = data.map((d) => {
+            const existingProduct = currentProducts.find((p) => p.id === d.id);
+            return {
+              ...d,
+              unity: existingProduct?.unity || 1,
+              originPrice: d.price,
+              disabledButton: existingProduct?.disabledButton || false,
+              like: existingProduct?.like || false,
+            };
+          });
+      
+          set(() => ({ products: dataProducts }));
         } catch (error) {
           console.error("Erro:", error);
         }
