@@ -59,7 +59,7 @@ const Projects = () => {
     {
       title: "Streamer",
       desc: "Projeto de streaming de filmes com consumo de API e UI dinâmica.",
-      link: "https://projeto-streamer-5chw2qrru-clauder-pazs-projects.vercel.app/",
+      link: "https://projeto-catalogfilms.vercel.app/",
       image: streamer,
     },
     {
