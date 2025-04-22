@@ -1,29 +1,230 @@
 import { create } from "zustand";
+import axios from "axios";
 
-export const useFilmsStore = create((set) => ({
-    listFilms: [],
-    listTv: [],
+export const useFilmsStore = create((set, get) => ({
+  films: [],
+  tv: [],
+  filmList: [],
+  searchResults: [],
+  search: '',
+  setSearch: (value) => set({ search: value }),
 
-    addFilms: (id,image,title)=>
-        set((state)=>({
-          listFilms: [...state.listFilms,{id,image,title,rating:0}],
-        })),
-    
-    updateRating: (id, rating) =>
-        set((state) => ({
-            listFilms: state.listFilms.map((film) =>
-                film.id === id ? { ...film, rating } : film
-            ),
-        })),
-    updateRatingTv: (id, rating) =>
-        set((state) => ({
-            listTv: state.listTv.map((tv) =>
-                tv.id === id ? { ...tv, rating } : tv
-            ),
-        })),
-    
-    addTv: (id,image,name)=>
-        set((state)=>({
-            listTv: [...state.listTv,{id,image,name,rating:0}],
-        })),
+  searchFilms: (query) => {
+    const { films, tv } = get();
+    const lowerQuery = query.toLowerCase();
+
+    const filteredFilms = films.filter((f) =>
+      f.title?.toLowerCase().includes(lowerQuery)
+    );
+
+    const filteredTV = tv.filter((t) =>
+      t.name?.toLowerCase().includes(lowerQuery)
+    );
+
+    set({ searchResults: [...filteredFilms, ...filteredTV] });
+  },
+
+  addFilmsApi: async () => {
+    const response = await axios({
+      method: "get",
+      url: "https://api.themoviedb.org/3/discover/movie",
+      params: {
+        api_key: "6d46e6899773f358d9389261fb6867bc",
+        language: "pt-BR",
+      },
+    });
+
+    const filmesDetalhados = await Promise.all(
+      response.data.results.map(async (f) => {
+        const [detalhes, creditos, classificacao] = await Promise.all([
+          axios.get(`https://api.themoviedb.org/3/movie/${f.id}`, {
+            params: {
+              api_key: "6d46e6899773f358d9389261fb6867bc",
+              language: "pt-BR",
+            },
+          }),
+          axios.get(`https://api.themoviedb.org/3/movie/${f.id}/credits`, {
+            params: {
+              api_key: "6d46e6899773f358d9389261fb6867bc",
+            },
+          }),
+          axios.get(
+            `https://api.themoviedb.org/3/movie/${f.id}/release_dates`,
+            {
+              params: {
+                api_key: "6d46e6899773f358d9389261fb6867bc",
+              },
+            }
+          ),
+        ]);
+
+        const brRating = classificacao.data.results.find(
+          (r) => r.iso_3166_1 === "BR"
+        );
+        const contentRating = brRating?.release_dates?.[0]?.certification || "";
+
+        return {
+          ...f,
+          runtime: detalhes.data.runtime,
+          contentRating,
+          cast: creditos.data.cast.slice(0, 5),
+          director:
+            creditos.data.crew.find((p) => p.job === "Director")?.name || "",
+          disabledBtn: false,
+          likeBtn: false,
+          dislikeBtn: false,
+          loveBtn: false,
+        };
+      })
+    );
+
+    set({ films: filmesDetalhados });
+  },
+
+  addTvApi: async () => {
+    const response = await axios({
+      method: "get",
+      url: "https://api.themoviedb.org/3/discover/tv",
+      params: {
+        api_key: "6d46e6899773f358d9389261fb6867bc",
+        language: "pt-BR",
+      },
+    });
+
+    const tvDetalhadas = await Promise.all(
+      response.data.results.map(async (tv) => {
+        const [detalhes, creditos, classificacao] = await Promise.all([
+          axios.get(`https://api.themoviedb.org/3/tv/${tv.id}`, {
+            params: {
+              api_key: "6d46e6899773f358d9389261fb6867bc",
+              language: "pt-BR",
+            },
+          }),
+          axios.get(`https://api.themoviedb.org/3/tv/${tv.id}/credits`, {
+            params: {
+              api_key: "6d46e6899773f358d9389261fb6867bc",
+            },
+          }),
+          axios.get(
+            `https://api.themoviedb.org/3/tv/${tv.id}/content_ratings`,
+            {
+              params: {
+                api_key: "6d46e6899773f358d9389261fb6867bc",
+              },
+            }
+          ),
+        ]);
+
+        const brRating = classificacao.data.results.find(
+          (r) => r.iso_3166_1 === "BR"
+        );
+        const contentRating = brRating?.rating || "";
+
+        return {
+          ...tv,
+          episode_run_time: detalhes.data.episode_run_time?.[0] || 0,
+          number_of_seasons: detalhes.data.number_of_seasons,
+          contentRating,
+          created_by: detalhes.data.created_by?.[0]?.name || "",
+          cast: creditos.data.cast.slice(0, 5),
+          disabledBtn: false,
+          likeBtn: false,
+          dislikeBtn: false,
+          loveBtn: false,
+        };
+      })
+    );
+
+    set({ tv: tvDetalhadas });
+  },
+
+  listFilms: (id, image, title) => {
+    set((state) => ({
+      filmList: [...state.filmList, { id, image, title, disabledBtn: !false }],
+      films: state.films.map((f) =>
+        f.id === id ? { ...f, disabledBtn: !f.disabledBtn } : f
+      ),
+      tv: state.tv.map((f) =>
+        f.id === id ? { ...f, disabledBtn: !f.disabledBtn } : f
+      ),
+    }));
+  },
+
+  removeList: (id) => {
+    set((state) => ({
+      filmList: state.filmList
+        .map((f) => (f.id === id ? { ...f, disabledBtn: false } : f))
+        .filter((f) => f.id !== id),
+      films: state.films.map((f) =>
+        f.id === id && f.disabledBtn ? { ...f, disabledBtn: false } : f
+      ),
+      tv: state.tv.map((f) =>
+        f.id === id && f.disabledBtn ? { ...f, disabledBtn: false } : f
+      ),
+    }));
+  },
+
+  starsRaiting: (raiting) => {
+    const maxStars = 5;
+    const stars = Math.round(raiting / 2);
+    return "★".repeat(stars) + "✰".repeat(maxStars - stars);
+  },
+
+  like: (id) => {
+    set((state) => ({
+      films: state.films.map((f) =>
+        f.id === id
+          ? { ...f, likeBtn: !f.likeBtn, dislikeBtn: false, loveBtn: false }
+          : f
+      ),
+      filmList: state.filmList.map((f) =>
+        f.id === id
+          ? { ...f, likeBtn: !f.likeBtn, dislikeBtn: false, loveBtn: false }
+          : f
+      ),
+      tv: state.tv.map((f) =>
+        f.id === id
+          ? { ...f, likeBtn: !f.likeBtn, dislikeBtn: false, loveBtn: false }
+          : f
+      ),
+    }));
+  },
+  dislike: (id) => {
+    set((state) => ({
+      films: state.films.map((f) =>
+        f.id === id
+          ? { ...f, dislikeBtn: !f.dislikeBtn, likeBtn: false, loveBtn: false }
+          : f
+      ),
+      filmList: state.filmList.map((f) =>
+        f.id === id
+          ? { ...f, dislikeBtn: !f.dislikeBtn, likeBtn: false, loveBtn: false }
+          : f
+      ),
+      tv: state.tv.map((f) =>
+        f.id === id
+          ? { ...f, dislikeBtn: !f.dislikeBtn, likeBtn: false, loveBtn: false }
+          : f
+      ),
+    }));
+  },
+  love: (id) => {
+    set((state) => ({
+      films: state.films.map((f) =>
+        f.id === id
+          ? { ...f, loveBtn: !f.loveBtn, dislikeBtn: false, likeBtn: false }
+          : f
+      ),
+      filmList: state.filmList.map((f) =>
+        f.id === id
+          ? { ...f, loveBtn: !f.loveBtn, dislikeBtn: false, likeBtn: false }
+          : f
+      ),
+      tv: state.tv.map((f) =>
+        f.id === id
+          ? { ...f, loveBtn: !f.loveBtn, dislikeBtn: false, likeBtn: false }
+          : f
+      ),
+    }));
+  },
 }));

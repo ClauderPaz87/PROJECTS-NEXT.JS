@@ -1,9 +1,9 @@
-import ApiFilms from "../components/Films/ApiFilms";
+import CardsFilms from "@/components/Films/CardsFilms";
 
 export default function Home() {
   return (
     <div>
-      <ApiFilms/>
+      <CardsFilms/>
     </div>
   );
 }
