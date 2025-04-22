@@ -1,3 +1,7 @@
+import { create } from "zustand"
+import axios from "axios";
+import { persist } from "zustand/middleware";
+
 export const useFilmsStore = create(
   persist(
     (set, get) => ({
