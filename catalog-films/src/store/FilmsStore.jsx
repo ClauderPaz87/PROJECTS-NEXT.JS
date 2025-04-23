@@ -109,6 +109,7 @@ export const useFilmsStore = create(
 
           const tvDetalhadas = await Promise.all(
             response.data.results.map(async (tv) => {
+              const existing = get().films.find(item => item.id === f.id);
               const [detalhes, creditos, classificacao] = await Promise.all([
                 axios.get(`https://api.themoviedb.org/3/tv/${tv.id}`, {
                   params: {
@@ -143,10 +144,10 @@ export const useFilmsStore = create(
                 contentRating,
                 created_by: detalhes.data.created_by?.[0]?.name || "",
                 cast: creditos.data.cast.slice(0, 5),
-                disabledBtn: false,
-                likeBtn: false,
-                dislikeBtn: false,
-                loveBtn: false,
+                disabledBtn: existing?.disabledBtn || false,
+                likeBtn: existing?.likeBtn || false,
+                dislikeBtn: existing?.dislikeBtn || false,
+                loveBtn: existing?.loveBtn || false,
               };
             })
           );
