@@ -102,7 +102,7 @@ const page = () => {
         {filmList.map((film) => (
           <SwiperSlide
             key={film.id}
-            className="hover:!z-100 !overflow-visible group cursor-pointer gap-2 flex"
+            className="hover:!z-100 !overflow-visible group cursor-pointer gap-2 flex flex-row"
           >
             <Card
               key={film.id}

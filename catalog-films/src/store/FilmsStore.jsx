@@ -161,10 +161,23 @@ export const useFilmsStore = create(
       },
 
       listFilms: (id, image, title, mediaType) => {
+        const existing =
+          get().films.find((item) => item.id === id) ||
+          get().tv.find((item) => item.id === id);
+
         set((state) => ({
           filmList: [
             ...state.filmList,
-            { id, image, title, disabledBtn: false, mediaType },
+            {
+              id,
+              image,
+              title,
+              mediaType,
+              disabledBtn: true,
+              likeBtn: existing?.likeBtn || false,
+              dislikeBtn: existing?.dislikeBtn || false,
+              loveBtn: existing?.loveBtn || false,
+            },
           ],
           films: state.films.map((f) =>
             f.id === id ? { ...f, disabledBtn: true } : f
@@ -270,7 +283,6 @@ export const useFilmsStore = create(
     }),
     {
       name: "films-store",
-      version: 2,
       getStorage: () => localStorage,
       merge: (persistedState, currentState) => ({
         ...currentState,
