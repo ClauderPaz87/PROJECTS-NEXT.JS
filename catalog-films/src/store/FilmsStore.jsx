@@ -109,7 +109,7 @@ export const useFilmsStore = create(
 
           const tvDetalhadas = await Promise.all(
             response.data.results.map(async (tv) => {
-              const existing = get().films.find(item => item.id === f.id);
+              const existing = get().tv.find(item => item.id === f.id);
               const [detalhes, creditos, classificacao] = await Promise.all([
                 axios.get(`https://api.themoviedb.org/3/tv/${tv.id}`, {
                   params: {
