@@ -1,4 +1,4 @@
-import { create } from "zustand"
+import { create } from "zustand";
 import axios from "axios";
 import { persist } from "zustand/middleware";
 
@@ -41,6 +41,7 @@ export const useFilmsStore = create(
 
           const filmesDetalhados = await Promise.all(
             response.data.results.map(async (f) => {
+              const existing = get().films.find(item => item.id === f.id);
               const [detalhes, creditos, classificacao] = await Promise.all([
                 axios.get(`https://api.themoviedb.org/3/movie/${f.id}`, {
                   params: {
@@ -48,11 +49,14 @@ export const useFilmsStore = create(
                     language: "pt-BR",
                   },
                 }),
-                axios.get(`https://api.themoviedb.org/3/movie/${f.id}/credits`, {
-                  params: {
-                    api_key: "6d46e6899773f358d9389261fb6867bc",
-                  },
-                }),
+                axios.get(
+                  `https://api.themoviedb.org/3/movie/${f.id}/credits`,
+                  {
+                    params: {
+                      api_key: "6d46e6899773f358d9389261fb6867bc",
+                    },
+                  }
+                ),
                 axios.get(
                   `https://api.themoviedb.org/3/movie/${f.id}/release_dates`,
                   {
@@ -77,10 +81,10 @@ export const useFilmsStore = create(
                 director:
                   creditos.data.crew.find((p) => p.job === "Director")?.name ||
                   "",
-                disabledBtn: false,
-                likeBtn: false,
-                dislikeBtn: false,
-                loveBtn: false,
+                disabledBtn: existing?.disabledBtn || false,
+                likeBtn: existing?.likeBtn || false,
+                dislikeBtn: existing?.dislikeBtn || false,
+                loveBtn: existing?.loveBtn || false,
               };
             })
           );
@@ -210,17 +214,32 @@ export const useFilmsStore = create(
         set((state) => ({
           films: state.films.map((f) =>
             f.id === id
-              ? { ...f, dislikeBtn: !f.dislikeBtn, likeBtn: false, loveBtn: false }
+              ? {
+                  ...f,
+                  dislikeBtn: !f.dislikeBtn,
+                  likeBtn: false,
+                  loveBtn: false,
+                }
               : f
           ),
           filmList: state.filmList.map((f) =>
             f.id === id
-              ? { ...f, dislikeBtn: !f.dislikeBtn, likeBtn: false, loveBtn: false }
+              ? {
+                  ...f,
+                  dislikeBtn: !f.dislikeBtn,
+                  likeBtn: false,
+                  loveBtn: false,
+                }
               : f
           ),
           tv: state.tv.map((f) =>
             f.id === id
-              ? { ...f, dislikeBtn: !f.dislikeBtn, likeBtn: false, loveBtn: false }
+              ? {
+                  ...f,
+                  dislikeBtn: !f.dislikeBtn,
+                  likeBtn: false,
+                  loveBtn: false,
+                }
               : f
           ),
         }));
@@ -248,7 +267,7 @@ export const useFilmsStore = create(
     }),
     {
       name: "films-store",
-      version: 2,
+      version:2,
       getStorage: () => localStorage,
     }
   )

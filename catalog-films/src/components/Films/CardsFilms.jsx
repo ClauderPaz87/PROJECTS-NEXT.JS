@@ -124,7 +124,7 @@ const CardsFilms = () => {
   } = divideFilms(films, tv);
 
   return (
-    <div className="mt-[570px] px-6">
+    <div className="mt-[570px] px-6 overflow-x-hidden">
       <Swiper
         slidesPerView={5}
         spaceBetween={0}

@@ -221,33 +221,33 @@ const Page = () => {
               side="top"
             >
               <button
-                onClick={() => handleDislike(tv.id)}
+                onClick={() => handleDislike(tvFilm.id)}
                 className={`text-2xl text-zinc-400 cursor-pointer hover:opacity-80`}
               >
                 <BiSolidDislike
                   ref={dislikeRef}
                   size={25}
-                  color={`${tv.dislikeBtn ? "white" : "gray"}`}
+                  color={`${tvFilm.dislikeBtn ? "white" : "gray"}`}
                 />
               </button>
               <button
-                onClick={() => handleLike(tv.id)}
+                onClick={() => handleLike(tvFilm.id)}
                 className={`text-2xl cursor-pointer hover:opacity-80 transition-opacity `}
               >
                 <BiSolidLike
                   ref={likeRef}
                   size={25}
-                  color={`${tv.likeBtn ? "white" : "gray"}`}
+                  color={`${tvFilm.likeBtn ? "white" : "gray"}`}
                 />
               </button>
               <button
-                onClick={() => handleLove(tv.id)}
+                onClick={() => handleLove(tvFilm.id)}
                 className={`text-2xl text-zinc-400 cursor-pointer hover:opacity-80`}
               >
                 <BiSolidHeart
                   ref={loveRef}
                   size={25}
-                  color={`${tv.loveBtn ? "red" : "gray"}`}
+                  color={`${tvFilm.loveBtn ? "red" : "gray"}`}
                 />
               </button>
             </PopoverContent>

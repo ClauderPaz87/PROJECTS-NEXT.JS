@@ -8,7 +8,7 @@ import {
 import { useFilmsStore } from "@/store/FilmsStore";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-import { BiLike, BiSolidDislike, BiSolidHeart, BiSolidLike } from "react-icons/bi";
+import { BiSolidDislike, BiSolidHeart, BiSolidLike } from "react-icons/bi";
 import { CgMoreO } from "react-icons/cg";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -17,7 +17,7 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
 import gsap from "gsap";
 
 const page = () => {
-  const { filmList, addFilmsApi, removeList, addTvApi, like, dislike, love } = useFilmsStore();
+  const { filmList, addFilmsApi, removeList, addTvApi, like, dislike, love,listFilms } = useFilmsStore();
   const likeRef = useRef(null)
   const dislikeRef = useRef(null)
   const loveRef = useRef(null)
