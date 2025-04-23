@@ -41,7 +41,7 @@ export const useFilmsStore = create(
 
           const filmesDetalhados = await Promise.all(
             response.data.results.map(async (f) => {
-              const existing = get().films.find(item => item.id === f.id);
+              const existing = get().films.find((item) => item.id === f.id);
               const [detalhes, creditos, classificacao] = await Promise.all([
                 axios.get(`https://api.themoviedb.org/3/movie/${f.id}`, {
                   params: {
@@ -75,6 +75,7 @@ export const useFilmsStore = create(
 
               return {
                 ...f,
+                mediaType: "film",
                 runtime: detalhes.data.runtime,
                 contentRating,
                 cast: creditos.data.cast.slice(0, 5),
@@ -109,7 +110,7 @@ export const useFilmsStore = create(
 
           const tvDetalhadas = await Promise.all(
             response.data.results.map(async (tv) => {
-              const existing = get().tv.find(item => item.id === f.id);
+              const existing = get().tv.find((item) => item.id === tv.id);
               const [detalhes, creditos, classificacao] = await Promise.all([
                 axios.get(`https://api.themoviedb.org/3/tv/${tv.id}`, {
                   params: {
@@ -139,6 +140,7 @@ export const useFilmsStore = create(
 
               return {
                 ...tv,
+                mediaType: "tv",
                 episode_run_time: detalhes.data.episode_run_time?.[0] || 0,
                 number_of_seasons: detalhes.data.number_of_seasons,
                 contentRating,
@@ -158,11 +160,11 @@ export const useFilmsStore = create(
         }
       },
 
-      listFilms: (id, image, title) => {
+      listFilms: (id, image, title, mediaType) => {
         set((state) => ({
           filmList: [
             ...state.filmList,
-            { id, image, title, disabledBtn: false },
+            { id, image, title, disabledBtn: false, mediaType },
           ],
           films: state.films.map((f) =>
             f.id === id ? { ...f, disabledBtn: true } : f
@@ -268,8 +270,15 @@ export const useFilmsStore = create(
     }),
     {
       name: "films-store",
-      version:2,
+      version: 2,
       getStorage: () => localStorage,
+      merge: (persistedState, currentState) => ({
+        ...currentState,
+        ...persistedState,
+        filmList: Array.isArray(persistedState?.filmList)
+          ? persistedState.filmList
+          : [],
+      }),
     }
   )
 );

@@ -13,9 +13,9 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { BiSolidDislike, BiSolidHeart, BiSolidLike } from "react-icons/bi";
 import { FaCheck } from "react-icons/fa6";
 import { Tooltip, TooltipTrigger, TooltipContent } from "../ui/tooltip";
-import {HoverCard,HoverCardTrigger,HoverCardContent,} from "@/components/ui/hover-card";
 import TvFilms from "./TvFims";
 import gsap from "gsap";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 const CardsFilms = () => {
   const {
@@ -208,7 +208,7 @@ const CardsFilms = () => {
                       ) : (
                         <span
                           onClick={() =>
-                            listFilms(film.id, film.poster_path, film.title)
+                            listFilms(film.id, film.poster_path, film.title,film.mediaType)
                           }
                         >
                           <IoIosAddCircleOutline className="hover:opacity-90" />
@@ -226,8 +226,8 @@ const CardsFilms = () => {
                   </TooltipContent>
                 </Tooltip>
 
-                <HoverCard openDelay={100}>
-                  <HoverCardTrigger asChild>
+                <Popover openDelay={100}>
+                  <PopoverTrigger asChild>
                   <button className="cursor-pointer">
                       <BiSolidLike
                         size={35}
@@ -235,8 +235,8 @@ const CardsFilms = () => {
                         className="hover:opacity-80"
                       />
                     </button>
-                  </HoverCardTrigger>
-                  <HoverCardContent
+                  </PopoverTrigger>
+                  <PopoverContent
                     className="bg-black text-white flex gap-3 justify-center w-32 h-13 items-center border-0 rounded-md"
                     side="top"
                   >
@@ -270,8 +270,8 @@ const CardsFilms = () => {
                         color={`${film.loveBtn ? "red" : "gray"}`}
                       />
                     </button>
-                  </HoverCardContent>
-                </HoverCard>
+                  </PopoverContent>
+                </Popover>
               </div>
             </Card>
           </SwiperSlide>
@@ -361,7 +361,7 @@ const CardsFilms = () => {
                       ) : (
                         <span
                           onClick={() =>
-                            listFilms(film.id, film.poster_path, film.title)
+                            listFilms(film.id, film.poster_path, film.title,film.mediaType)
                           }
                         >
                           <IoIosAddCircleOutline className="hover:opacity-90" />
@@ -379,17 +379,17 @@ const CardsFilms = () => {
                   </TooltipContent>
                 </Tooltip>
 
-                <HoverCard openDelay={100}>
-                  <HoverCardTrigger asChild>
-                    <button className="cursor-pointer">
+                <Popover openDelay={100}>
+                  <PopoverTrigger asChild>
+                  <button className="cursor-pointer">
                       <BiSolidLike
                         size={35}
                         style={{ color: "#ef4444" }}
                         className="hover:opacity-80"
                       />
                     </button>
-                  </HoverCardTrigger>
-                  <HoverCardContent
+                  </PopoverTrigger>
+                  <PopoverContent
                     className="bg-black text-white flex gap-3 justify-center w-32 h-13 items-center border-0 rounded-md"
                     side="top"
                   >
@@ -423,8 +423,8 @@ const CardsFilms = () => {
                         color={`${film.loveBtn ? "red" : "gray"}`}
                       />
                     </button>
-                  </HoverCardContent>
-                </HoverCard>
+                  </PopoverContent>
+                </Popover>
               </div>
             </Card>
           </SwiperSlide>
@@ -514,7 +514,7 @@ const CardsFilms = () => {
                       ) : (
                         <span
                           onClick={() =>
-                            listFilms(film.id, film.poster_path, film.title)
+                            listFilms(film.id, film.poster_path, film.title,film.mediaType)
                           }
                         >
                           <IoIosAddCircleOutline className="hover:opacity-90" />
@@ -532,8 +532,8 @@ const CardsFilms = () => {
                   </TooltipContent>
                 </Tooltip>
 
-                <HoverCard openDelay={100}>
-                  <HoverCardTrigger asChild>
+                <Popover openDelay={100}>
+                  <PopoverTrigger asChild>
                   <button className="cursor-pointer">
                       <BiSolidLike
                         size={35}
@@ -541,8 +541,8 @@ const CardsFilms = () => {
                         className="hover:opacity-80"
                       />
                     </button>
-                  </HoverCardTrigger>
-                  <HoverCardContent
+                  </PopoverTrigger>
+                  <PopoverContent
                     className="bg-black text-white flex gap-3 justify-center w-32 h-13 items-center border-0 rounded-md"
                     side="top"
                   >
@@ -576,8 +576,8 @@ const CardsFilms = () => {
                         color={`${film.loveBtn ? "red" : "gray"}`}
                       />
                     </button>
-                  </HoverCardContent>
-                </HoverCard>
+                  </PopoverContent>
+                </Popover>
               </div>
             </Card>
           </SwiperSlide>

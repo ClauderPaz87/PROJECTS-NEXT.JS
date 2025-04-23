@@ -8,15 +8,16 @@ import Image from "next/image";
 import { useFilmsStore } from "@/store/FilmsStore";
 import { FaCheck } from "react-icons/fa6";
 import Link from "next/link";
-import {HoverCard,HoverCardContent,HoverCardTrigger,} from "../ui/hover-card";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { useRef } from "react";
 import gsap from "gsap";
 
 const TvFilms = ({ firstPartTv, secondPartTv, thirdPartTv }) => {
-  const { listFilms, removeList, starsRaiting, like, love, dislike } = useFilmsStore();
-  const likeRef = useRef(null)
-  const dislikeRef = useRef(null)
-  const loveRef = useRef(null)
+  const { listFilms, removeList, starsRaiting, like, love, dislike } =
+    useFilmsStore();
+  const likeRef = useRef(null);
+  const dislikeRef = useRef(null);
+  const loveRef = useRef(null);
 
   const handleLike = (id) => {
     like(id);
@@ -131,7 +132,7 @@ const TvFilms = ({ firstPartTv, secondPartTv, thirdPartTv }) => {
                       ) : (
                         <span
                           onClick={() =>
-                            listFilms(tv.id, tv.poster_path, tv.name)
+                            listFilms(tv.id, tv.poster_path, tv.name,tv.mediaType)
                           }
                         >
                           <IoIosAddCircleOutline className="hover:opacity-90" />
@@ -147,8 +148,8 @@ const TvFilms = ({ firstPartTv, secondPartTv, thirdPartTv }) => {
                   </TooltipContent>
                 </Tooltip>
 
-                <HoverCard openDelay={100}>
-                  <HoverCardTrigger asChild>
+                <Popover openDelay={100}>
+                  <PopoverTrigger asChild>
                     <button className="cursor-pointer">
                       <BiSolidLike
                         size={35}
@@ -156,8 +157,8 @@ const TvFilms = ({ firstPartTv, secondPartTv, thirdPartTv }) => {
                         className="hover:opacity-80"
                       />
                     </button>
-                  </HoverCardTrigger>
-                  <HoverCardContent
+                  </PopoverTrigger>
+                  <PopoverContent
                     className="bg-black text-white flex gap-3 justify-center w-32 h-13 items-center border-0 rounded-md"
                     side="top"
                   >
@@ -191,8 +192,8 @@ const TvFilms = ({ firstPartTv, secondPartTv, thirdPartTv }) => {
                         color={`${tv.loveBtn ? "red" : "gray"}`}
                       />
                     </button>
-                  </HoverCardContent>
-                </HoverCard>
+                  </PopoverContent>
+                </Popover>
               </div>
             </Card>
           </SwiperSlide>
@@ -282,7 +283,7 @@ const TvFilms = ({ firstPartTv, secondPartTv, thirdPartTv }) => {
                       ) : (
                         <span
                           onClick={() =>
-                            listFilms(tv.id, tv.poster_path, tv.name)
+                            listFilms(tv.id, tv.poster_path, tv.name,tv.mediaType)
                           }
                         >
                           <IoIosAddCircleOutline className="hover:opacity-90" />
@@ -298,8 +299,8 @@ const TvFilms = ({ firstPartTv, secondPartTv, thirdPartTv }) => {
                   </TooltipContent>
                 </Tooltip>
 
-                <HoverCard openDelay={100}>
-                  <HoverCardTrigger asChild>
+                <Popover openDelay={100}>
+                  <PopoverTrigger asChild>
                     <button className="cursor-pointer">
                       <BiSolidLike
                         size={35}
@@ -307,8 +308,8 @@ const TvFilms = ({ firstPartTv, secondPartTv, thirdPartTv }) => {
                         className="hover:opacity-80"
                       />
                     </button>
-                  </HoverCardTrigger>
-                  <HoverCardContent
+                  </PopoverTrigger>
+                  <PopoverContent
                     className="bg-black text-white flex gap-3 justify-center w-32 h-13 items-center border-0 rounded-md"
                     side="top"
                   >
@@ -342,8 +343,8 @@ const TvFilms = ({ firstPartTv, secondPartTv, thirdPartTv }) => {
                         color={`${tv.loveBtn ? "red" : "gray"}`}
                       />
                     </button>
-                  </HoverCardContent>
-                </HoverCard>
+                  </PopoverContent>
+                </Popover>
               </div>
             </Card>
           </SwiperSlide>
@@ -433,7 +434,7 @@ const TvFilms = ({ firstPartTv, secondPartTv, thirdPartTv }) => {
                       ) : (
                         <span
                           onClick={() =>
-                            listFilms(tv.id, tv.poster_path, tv.name)
+                            listFilms(tv.id, tv.poster_path, tv.name,tv.mediaType)
                           }
                         >
                           <IoIosAddCircleOutline className="hover:opacity-90" />
@@ -449,8 +450,8 @@ const TvFilms = ({ firstPartTv, secondPartTv, thirdPartTv }) => {
                   </TooltipContent>
                 </Tooltip>
 
-                <HoverCard openDelay={100}>
-                  <HoverCardTrigger asChild>
+                <Popover openDelay={100}>
+                  <PopoverTrigger asChild>
                     <button className="cursor-pointer">
                       <BiSolidLike
                         size={35}
@@ -458,8 +459,8 @@ const TvFilms = ({ firstPartTv, secondPartTv, thirdPartTv }) => {
                         className="hover:opacity-80"
                       />
                     </button>
-                  </HoverCardTrigger>
-                  <HoverCardContent
+                  </PopoverTrigger>
+                  <PopoverContent
                     className="bg-black text-white flex gap-3 justify-center w-32 h-13 items-center border-0 rounded-md"
                     side="top"
                   >
@@ -493,8 +494,8 @@ const TvFilms = ({ firstPartTv, secondPartTv, thirdPartTv }) => {
                         color={`${tv.loveBtn ? "red" : "gray"}`}
                       />
                     </button>
-                  </HoverCardContent>
-                </HoverCard>
+                  </PopoverContent>
+                </Popover>
               </div>
             </Card>
           </SwiperSlide>

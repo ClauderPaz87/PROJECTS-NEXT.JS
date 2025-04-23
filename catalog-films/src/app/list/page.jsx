@@ -15,6 +15,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FaCheck } from "react-icons/fa6";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import gsap from "gsap";
+import Link from "next/link";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 const page = () => {
   const { filmList, addFilmsApi, removeList, addTvApi, like, dislike, love,listFilms } = useFilmsStore();
@@ -34,6 +36,8 @@ const page = () => {
       </div>
     )
   }
+
+  if (!Array.isArray(filmList)) return null;
 
   const handleLike = (id) => {
     like(id);
@@ -114,17 +118,19 @@ const page = () => {
               />
 
               <div className="flex relative bottom-3.5 left-5 gap-7 z-10 bg-opacity-0">
-                <Tooltip>
-                  <TooltipTrigger className="cursor-pointer">
-                    <CgMoreO size={30} style={{ color: "#ef4444" }} />
-                  </TooltipTrigger>
-                  <TooltipContent
-                    side="bottom"
-                    className="absolute top-6 left-0.5"
-                  >
-                    Ver mais
-                  </TooltipContent>
-                </Tooltip>
+                <Link href={`/${film.mediaType === "movie" ? "film" : film.mediaType}/${film.id}`}>
+                  <Tooltip>
+                    <TooltipTrigger className="cursor-pointer">
+                      <CgMoreO size={30} style={{ color: "#ef4444" }} />
+                    </TooltipTrigger>
+                    <TooltipContent
+                      side="bottom"
+                      className="absolute top-6 left-0.5"
+                    >
+                      Ver mais
+                    </TooltipContent>
+                  </Tooltip>
+                </Link>
 
                 <Tooltip>
                   <TooltipTrigger asChild>
@@ -154,8 +160,8 @@ const page = () => {
                   </TooltipContent>
                 </Tooltip>
 
-                <HoverCard openDelay={100}>
-                  <HoverCardTrigger asChild>
+                <Popover openDelay={100}>
+                  <PopoverTrigger asChild>
                     <button className="cursor-pointer">
                       <BiSolidLike
                         size={35}
@@ -163,8 +169,8 @@ const page = () => {
                         className="hover:opacity-80"
                       />
                     </button>
-                  </HoverCardTrigger>
-                  <HoverCardContent
+                  </PopoverTrigger>
+                  <PopoverContent
                     className="bg-black text-white flex gap-3 justify-center w-32 h-13 items-center border-0 rounded-md"
                     side="top"
                   >
@@ -198,8 +204,8 @@ const page = () => {
                         color={`${film.loveBtn ? "red" : "gray"}`}
                       />
                     </button>
-                  </HoverCardContent>
-                </HoverCard>
+                  </PopoverContent>
+                </Popover>
               </div>
             </Card>
           </SwiperSlide>
